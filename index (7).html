@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN SPORT </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(239, 68, 68, 0.8); }
+        }
+        .glow-effect { animation: pulse-glow 3s infinite; }
+        .bg-glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(14px); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090d16; }
+        ::-webkit-scrollbar-thumb { background: #ef4444; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-glass border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="bg-gradient-to-tr from-red-600 to-orange-500 p-2.5 rounded-2xl shadow-lg shadow-red-600/30">
+                        <i data-lucide="dumbell" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <span class="text-2xl font-black tracking-wider text-white">
+                        TITAN<span class="text-red-500">SPORT</span>
+                    </span>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-300">
+                    <a href="#home" class="hover:text-red-500 transition-colors">Bosh sahifa</a>
+                    <a href="#products" class="hover:text-red-500 transition-colors">Mahsulotlar</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-3 bg-slate-900 border border-slate-800 rounded-xl hover:border-red-500/50 transition-all">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-slate-300"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-xs font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-slate-950">0</span>
+                    </button>
+
+                    <button onclick="openAdminModal()" class="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 px-4 py-2.5 rounded-xl font-bold shadow-lg shadow-red-600/20 transition-all text-sm">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">Admin Panel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6 text-center md:text-left">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 font-bold text-xs uppercase tracking-wider">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Professional Sport Ozuqalari & Anjomlari
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black leading-tight">
+                    TANGIZNI <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">MUKAMMAL</span> DARAJAGA YETKAZING!
+                </h1>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Sifat kafolati, tezkor yetkazib berish va eng qulay narxlar. O'z maqsadingiz sari titan kabi olg'a bosing!
+                </p>
+                <a href="#products" class="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 px-8 py-4 rounded-xl font-bold text-center shadow-xl shadow-red-600/30 transition-all transform hover:-translate-y-1">
+                    Xaridlarni Boshlash <i data-lucide="arrow-right" class="inline w-5 h-5 ml-1"></i>
+                </a>
+            </div>
+
+            <div class="relative flex justify-center">
+                <div class="w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-slate-800 glow-effect bg-slate-900/50 flex items-center justify-center relative group">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop" 
+                         alt="Hero Banner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 p-4 bg-glass rounded-2xl border border-slate-800 flex items-center gap-4">
+                        <i data-lucide="flame" class="w-8 h-8 text-red-500 animate-bounce"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Tezkor Yetkazib Berish!</h4>
+                            <p class="text-xs text-slate-400">Butun respublika bo'ylab do'kon va manzilga eltish</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="py-20 bg-slate-900/40 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-black mb-3">Katalog va Mahsulotlar</h2>
+                <p class="text-slate-400 text-sm">O'zingizga kerakli turdagi mahsulotlarni tanlang</p>
+                
+                <!-- Category Buttons -->
+                <div class="flex justify-center gap-3 mt-6">
+                    <button onclick="filterProducts('all')" class="cat-btn active px-5 py-2.5 rounded-xl font-bold text-xs uppercase bg-red-600 text-white shadow-lg shadow-red-600/20">Barchasi</button>
+                    <button onclick="filterProducts('ozuqa')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase bg-slate-800 text-slate-400 hover:bg-slate-700">Sport Ozuqalari</button>
+                    <button onclick="filterProducts('anjom')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase bg-slate-800 text-slate-400 hover:bg-slate-700">Sport Anjomlari</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- CART & CHECKOUT MODAL -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-slate-900 p-6 shadow-2xl flex flex-col justify-between border-l border-slate-800">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <h3 class="text-xl font-bold flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="text-red-500"></i> Savatingiz
+                    </h3>
+                    <button onclick="toggleCart()" class="p-2 hover:bg-slate-800 rounded-lg text-slate-400"><i data-lucide="x"></i></button>
+                </div>
+
+                <div id="cart-step-1">
+                    <div id="cart-items" class="mt-4 space-y-3 max-h-[45vh] overflow-y-auto pr-2"></div>
+                </div>
+
+                <!-- CHECKOUT FORM (STEP 2) -->
+                <div id="cart-step-2" class="hidden mt-4 space-y-4">
+                    <h4 class="font-bold text-sm text-red-500 uppercase tracking-wider">Mijoz Ma'lumotlari:</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="cust-first" placeholder="Ismingiz *" class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:border-red-500 outline-none">
+                        <input type="text" id="cust-last" placeholder="Familiyangiz *" class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:border-red-500 outline-none">
+                    </div>
+                    <input type="tel" id="cust-phone" placeholder="Telefon raqamingiz (+998...) *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:border-red-500 outline-none">
+                    
+                    <label class="block text-xs font-semibold text-slate-400 mt-2">YETKAZIB BERISH TURI:</label>
+                    <select id="delivery-type" onchange="toggleDeliveryAddress()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:border-red-500 outline-none">
+                        <option value="delivery">Uygacha yetkazib berish</option>
+                        <option value="pickup">Do'konning o'zidan olib ketish</option>
+                    </select>
+
+                    <div id="address-field">
+                        <textarea id="cust-address" placeholder="Aniq manzilingizni kiriting (Shahar, Ko'cha, Uy)..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:border-red-500 outline-none h-20"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-slate-800 pt-4 space-y-3">
+                <div class="flex justify-between items-center text-lg font-black">
+                    <span>Jami Narx:</span>
+                    <span id="cart-total" class="text-red-500">0 so'm</span>
+                </div>
+                <button id="btn-next" onclick="goToCheckout()" class="w-full bg-red-600 hover:bg-red-500 py-3.5 rounded-xl font-bold shadow-lg shadow-red-600/30 transition-all">
+                    Xaridni Rasmiylashtirish
+                </button>
+                <button id="btn-submit" onclick="submitOrder()" class="hidden w-full bg-green-600 hover:bg-green-500 py-3.5 rounded-xl font-bold shadow-lg shadow-green-600/30 transition-all">
+                    Buyurtmani Tasdiqlash
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL -->
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="closeAdminModal()"></div>
+        <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+            
+            <!-- ADMIN LOGIN VIEW -->
+            <div id="admin-login-view" class="py-8 space-y-6 text-center max-w-xs mx-auto">
+                <div class="w-20 h-20 mx-auto bg-red-600/10 border border-red-500/30 rounded-full flex items-center justify-center glow-effect">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0dXF2dnR4dm13aWVzNmRzeTJndnQxbjllc3VpdWNzeDZudTBiaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L333c85D4yvA3L3P5e/giphy.gif" alt="Lock" class="w-12 h-12 object-contain">
+                </div>
+                <div>
+                    <h3 class="text-xl font-black">ADMIN TIZIMI</h3>
+                    <p class="text-xs text-slate-400 mt-1">Parolni kiriting</p>
+                </div>
+                <input type="password" id="admin-pass" placeholder="Parol..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-center font-mono focus:border-red-500 outline-none">
+                <p class="text-xs text-red-400">🔑 Parol: <b>admin123</b></p>
+                <button onclick="checkAdminPassword()" class="w-full bg-red-600 hover:bg-red-500 py-3 rounded-xl font-bold transition-all">Kirish</button>
+            </div>
+
+            <!-- ADMIN DASHBOARD PANEL -->
+            <div id="admin-dashboard-view" class="hidden space-y-6">
+                <!-- Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <span class="p-2.5 bg-red-600/20 text-red-500 rounded-xl"><i data-lucide="layout-dashboard"></i></span>
+                        <div>
+                            <h3 class="font-bold text-lg">Admin Boshqaruv Markazi</h3>
+                            <p class="text-xs text-slate-400">Do'koningiz statistikasi va mahsulotlar nazorati</p>
+                        </div>
+                    </div>
+                    <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white"><i data-lucide="x"></i></button>
+                </div>
+
+                <!-- STATS CARDS (1 KUNLIK HISOBOT) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                        <p class="text-xs font-semibold text-slate-400">1 KUNLIK TUSHUM</p>
+                        <h4 id="stat-daily-revenue" class="text-2xl font-black text-green-400 mt-1">0 so'm</h4>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                        <p class="text-xs font-semibold text-slate-400">BUGUNGI BUYURTMALAR</p>
+                        <h4 id="stat-daily-orders" class="text-2xl font-black text-red-500 mt-1">0 ta</h4>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                        <p class="text-xs font-semibold text-slate-400">JAMI MAHSULOTLAR</p>
+                        <h4 id="stat-total-products" class="text-2xl font-black text-orange-400 mt-1">0 ta</h4>
+                    </div>
+                </div>
+
+                <!-- TABS -->
+                <div class="flex border-b border-slate-800 gap-4 text-sm font-bold">
+                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="pb-3 border-b-2 border-red-500 text-red-500">Mahsulotlar Nazorati</button>
+                    <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="pb-3 border-b-2 border-transparent text-slate-400">Buyurtmalar Tarixi</button>
+                </div>
+
+                <!-- TAB 1: MAHSULOTLAR NAZORATI -->
+                <div id="admin-tab-products" class="space-y-6">
+                    <!-- Add Product Form -->
+                    <form onsubmit="handleAddProduct(event)" class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <h4 class="text-xs font-bold text-red-400 uppercase">Yangi Mahsulot Qo'shish:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <input type="text" id="p-name" placeholder="Mahsulot Nomi *" required class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs focus:border-red-500 outline-none">
+                            <select id="p-category" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs focus:border-red-500 outline-none">
+                                <option value="ozuqa">Sport Ozuqasi</option>
+                                <option value="anjom">Sport Anjomi</option>
+                            </select>
+                            <input type="number" id="p-price" placeholder="Narxi (so'mda) *" required class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs focus:border-red-500 outline-none">
+                            <select id="p-status" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs focus:border-red-500 outline-none">
+                                <option value="active">Sotuvda mavjud</option>
+                                <option value="sale">Aksiyada</option>
+                                <option value="out">Tugagan (Out of stock)</option>
+                            </select>
+                            <input type="url" id="p-img" placeholder="Rasm URL havolasi *" required class="sm:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs focus:border-red-500 outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-500 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all">+ Mahsulotni Do'konga Joylash</button>
+                    </form>
+
+                    <!-- Products Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400 uppercase font-semibold border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Mahsulot</th>
+                                    <th class="p-3">Kategoriya</th>
+                                    <th class="p-3">Narx</th>
+                                    <th class="p-3">Holati</th>
+                                    <th class="p-3 text-right">Amal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-table" class="divide-y divide-slate-800/50"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: BUYURTMALAR TARIXI -->
+                <div id="admin-tab-orders" class="hidden space-y-4">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400 uppercase font-semibold border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Mijoz</th>
+                                    <th class="p-3">Telefon</th>
+                                    <th class="p-3">Manzil / Turi</th>
+                                    <th class="p-3">Jami Narx</th>
+                                    <th class="p-3">Sana</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-table" class="divide-y divide-slate-800/50"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10 text-center text-xs text-slate-500">
+        <p>© 2026 TITAN SPORT Store. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        lucide.createIcons();
+
+        // Initial Data
+        let products = [
+            { id: 1, name: "Gold Standard 100% Whey Protein", category: "ozuqa", price: 750000, status: "active", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=800&auto=format&fit=crop" },
+            { id: 2, name: "Professional Gantel To'plami (20kg)", category: "anjom", price: 620000, status: "sale", image: "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=800&auto=format&fit=crop" },
+            { id: 3, name: "Creatine Monohydrate 300g", category: "ozuqa", price: 280000, status: "active", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?q=80&w=800&auto=format&fit=crop" },
+            { id: 4, name: "Fitnes Rezinkalari (5 xil)", category: "anjom", price: 150000, status: "out", image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?q=80&w=800&auto=format&fit=crop" }
+        ];
+
+        let cart = [];
+        let orders = [];
+
+        // RENDER PRODUCTS IN FRONTEND
+        function renderProducts(items = products) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            items.forEach(product => {
+                let statusBadge = '';
+                if(product.status === 'out') {
+                    statusBadge = `<span class="bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase">Tugagan</span>`;
+                } else if(product.status === 'sale') {
+                    statusBadge = `<span class="bg-red-600 text-white px-2.5 py-1 rounded-full text-[10px] font-bold uppercase animate-pulse">Aksiya</span>`;
+                } else {
+                    statusBadge = `<span class="bg-green-600/20 text-green-400 border border-green-500/30 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase">Mavjud</span>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all duration-300 flex flex-col justify-between group";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-56 bg-slate-950 overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${product.status === 'out' ? 'grayscale opacity-50' : ''}">
+                            <div class="absolute top-3 left-3 flex gap-2">${statusBadge}</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-base text-white group-hover:text-red-400 transition-colors">${product.name}</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between mt-auto">
+                        <div>
+                            <span class="text-[10px] text-slate-500 block uppercase font-semibold">Narxi</span>
+                            <span class="text-lg font-black text-red-500">${product.price.toLocaleString()} so'm</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" ${product.status === 'out' ? 'disabled' : ''} 
+                                class="p-3 ${product.status === 'out' ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-red-600 hover:bg-red-500 text-white'} rounded-xl shadow-lg transition-all active:scale-90">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // CATEGORY FILTER
+        function filterProducts(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.classList.remove('bg-red-600', 'text-white');
+                b.classList.add('bg-slate-800', 'text-slate-400');
+            });
+            event.target.classList.add('bg-red-600', 'text-white');
+            
+            if(cat === 'all') renderProducts(products);
+            else renderProducts(products.filter(p => p.category === cat));
+        }
+
+        // CART LOGIC
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if(product.status === 'out') return;
+
+            const item = cart.find(i => i.id === id);
+            if(item) item.quantity++;
+            else cart.push({ ...product, quantity: 1 });
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.quantity, 0);
+
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-slate-500 py-8 text-sm">Savatchangiz bo'sh.</p>`;
+                document.getElementById('cart-total').innerText = "0 so'm";
+                return;
+            }
+
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                container.innerHTML += `
+                    <div class="flex items-center gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-white line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-red-500 font-bold">${item.price.toLocaleString()} so'm x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-slate-500 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    </div>
+                `;
+            });
+            document.getElementById('cart-total').innerText = total.toLocaleString() + " so'm";
+            lucide.createIcons();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+            // Reset modal steps
+            document.getElementById('cart-step-1').classList.remove('hidden');
+            document.getElementById('cart-step-2').classList.add('hidden');
+            document.getElementById('btn-next').classList.remove('hidden');
+            document.getElementById('btn-submit').classList.add('hidden');
+        }
+
+        function goToCheckout() {
+            if(cart.length === 0) { alert("Savatingiz bo'sh!"); return; }
+            document.getElementById('cart-step-1').classList.add('hidden');
+            document.getElementById('cart-step-2').classList.remove('hidden');
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('btn-submit').classList.remove('hidden');
+        }
+
+        function toggleDeliveryAddress() {
+            const val = document.getElementById('delivery-type').value;
+            const addrField = document.getElementById('address-field');
+            if(val === 'pickup') addrField.classList.add('hidden');
+            else addrField.classList.remove('hidden');
+        }
+
+        // SUBMIT ORDER (CUSTOMER)
+        function submitOrder() {
+            const first = document.getElementById('cust-first').value.trim();
+            const last = document.getElementById('cust-last').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const type = document.getElementById('delivery-type').value;
+            const address = document.getElementById('cust-address').value.trim();
+
+            if(!first || !last || !phone || (type === 'delivery' && !address)) {
+                alert("Iltimos, barcha zaruriy maydonlarni to'ldiring!");
+                return;
+            }
+
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            const newOrder = {
+                id: Date.now(),
+                customer: `${first} ${last}`,
+                phone,
+                deliveryType: type === 'delivery' ? 'Uygacha yetkazish' : "Do'kondan olib ketish",
+                address: type === 'delivery' ? address : "Do'kon manzili",
+                total: totalAmount,
+                date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString().slice(0,5)
+            };
+
+            orders.unshift(newOrder);
+            updateAdminStats();
+
+            alert(`Rahmat ${first}! Buyurtmangiz muvaffaqiyatli qabul qilindi. Operatorlarimiz tez orada siz bilan bog'lanishadi.`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // ADMIN FUNCTIONS
+        function openAdminModal() { document.getElementById('admin-modal').classList.remove('hidden'); }
+        function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); }
+
+        function checkAdminPassword() {
+            if(document.getElementById('admin-pass').value === 'admin123') {
+                document.getElementById('admin-login-view').classList.add('hidden');
+                document.getElementById('admin-dashboard-view').classList.remove('hidden');
+                updateAdminDashboard();
+            } else {
+                alert("Xato parol!");
+            }
+        }
+
+        function switchAdminTab(tab) {
+            if(tab === 'products') {
+                document.getElementById('admin-tab-products').classList.remove('hidden');
+                document.getElementById('admin-tab-orders').classList.add('hidden');
+                document.getElementById('tab-btn-products').className = "pb-3 border-b-2 border-red-500 text-red-500 font-bold";
+                document.getElementById('tab-btn-orders').className = "pb-3 border-b-2 border-transparent text-slate-400 font-bold";
+            } else {
+                document.getElementById('admin-tab-products').classList.add('hidden');
+                document.getElementById('admin-tab-orders').classList.remove('hidden');
+                document.getElementById('tab-btn-orders').className = "pb-3 border-b-2 border-red-500 text-red-500 font-bold";
+                document.getElementById('tab-btn-products').className = "pb-3 border-b-2 border-transparent text-slate-400 font-bold";
+            }
+        }
+
+        function handleAddProduct(e) {
+            e.preventDefault();
+            const newProd = {
+                id: Date.now(),
+                name: document.getElementById('p-name').value,
+                category: document.getElementById('p-category').value,
+                price: Number(document.getElementById('p-price').value),
+                status: document.getElementById('p-status').value,
+                image: document.getElementById('p-img').value
+            };
+            products.unshift(newProd);
+            renderProducts();
+            updateAdminDashboard();
+            e.target.reset();
+            alert("Yangi mahsulot joylandi!");
+        }
+
+        function deleteProduct(id) {
+            if(confirm("Haqiqatan ham o'chirmoqchimisiz?")) {
+                products = products.filter(p => p.id !== id);
+                renderProducts();
+                updateAdminDashboard();
+            }
+        }
+
+        function updateAdminDashboard() {
+            // Update Table Products
+            const pTable = document.getElementById('admin-products-table');
+            pTable.innerHTML = '';
+            products.forEach(p => {
+                pTable.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold flex items-center gap-2">
+                            <img src="${p.image}" class="w-8 h-8 rounded object-cover"> ${p.name}
+                        </td>
+                        <td class="p-3 uppercase font-semibold">${p.category}</td>
+                        <td class="p-3 font-bold text-red-400">${p.price.toLocaleString()} so'm</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${p.status==='active'?'bg-green-950 text-green-400':p.status==='sale'?'bg-red-950 text-red-400':'bg-slate-800 text-slate-400'}">${p.status}</span></td>
+                        <td class="p-3 text-right">
+                            <button onclick="deleteProduct(${p.id})" class="text-red-500 hover:text-red-400 p-1"><i data-lucide="trash" class="w-4 h-4"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            // Update Table Orders
+            const oTable = document.getElementById('admin-orders-table');
+            oTable.innerHTML = '';
+            orders.forEach(o => {
+                oTable.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold text-white">${o.customer}</td>
+                        <td class="p-3">${o.phone}</td>
+                        <td class="p-3"><span class="block font-semibold">${o.deliveryType}</span><span class="text-[10px] text-slate-500">${o.address}</span></td>
+                        <td class="p-3 font-bold text-green-400">${o.total.toLocaleString()} so'm</td>
+                        <td class="p-3 text-slate-500 text-[10px]">${o.date}</td>
+                    </tr>
+                `;
+            });
+
+            updateAdminStats();
+            lucide.createIcons();
+        }
+
+        function updateAdminStats() {
+            const dailyRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+            document.getElementById('stat-daily-revenue').innerText = dailyRevenue.toLocaleString() + " so'm";
+            document.getElementById('stat-daily-orders').innerText = orders.length + " ta";
+            document.getElementById('stat-total-products').innerText = products.length + " ta";
+        }
+
+        // Init
+        renderProducts();
+    </script>
+</body>
+</html>
+
